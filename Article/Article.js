@@ -72,10 +72,31 @@ const data = [
   },
   {
     title: 'Professional Software Development in 2019',
+    date: 'Jan 15st, 2020',
+    firstParagraph: `HHodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
+    Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
+    Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`,
+
+    secondParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
+    Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
+    Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor. `,
+
+    thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
+          Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
+          Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Hello Friends!',
     date: 'Jan 1st, 2019',
-    firstParagraph: `Hodor hodor HODOR! Hodor hodor - hodor, hodor. Hodor hodor... Hodor hodor hodor; hodor hodor. Hodor hodor hodor, hodor, hodor
-          hodor. Hodor, hodor. Hodor. Hodor, hodor - hodor... Hodor hodor hodor; hodor HODOR hodor, hodor hodor?! Hodor hodor, hodor.
-          Hodor hodor hodor hodor hodor! Hodor hodor - HODOR hodor, hodor hodor hodor hodor hodor; hodor hodor? `,
+    firstParagraph: `Bulbasaur Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ivysaur Lorem ipsum dolor sit amet, consectetur adipiscing
+    elit. Venusaur Lorem ipsum dolor sit amet, consectetur adipiscing elit. Charmander Lorem ipsum dolor sit amet, consectetur
+    adipiscing elit. Charmeleon Lorem ipsum dolor sit amet, consectetur adipiscing elit. Charizard Lorem ipsum dolor sit amet,
+    consectetur adipiscing elit. Squirtle Lorem ipsum dolor sit amet, consectetur adipiscing elit. Wartortle Lorem ipsum dolor
+    sit amet, consectetur adipiscing elit. Blastoise Lorem ipsum dolor sit amet, consectetur adipiscing elit. Caterpie Lorem
+    ipsum dolor sit amet, consectetur adipiscing elit. Metapod Lorem ipsum dolor sit amet, consectetur adipiscing elit. Butterfree
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Weedle Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    Kakuna Lorem ipsum dolor sit amet, consectetur adipiscing elit. Beedrill Lorem ipsum dolor sit amet, consectetur adipiscing
+    elit. `,
 
     secondParagraph: `Hodor, hodor. Hodor. Hodor, hodor, hodor. Hodor hodor, hodor. Hodor hodor, hodor, hodor hodor. Hodor! Hodor hodor, hodor;
           hodor hodor hodor? Hodor, hodor. Hodor. Hodor, hodor - HODOR hodor, hodor hodor hodor! Hodor, hodor. Hodor. Hodor, HODOR
@@ -103,6 +124,8 @@ const data = [
 
   Your function should take either an object as it's one argument, or 5 separate arguments mapping to each piece of the data object above.
 
+
+
   Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
 
   Step 3: return the entire component.
@@ -112,3 +135,59 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+//step 1
+function createArticle(title, date, firstParagraph,secondParagraph,thirdParagraph){
+  const article = document.createElement('div');
+  const articleTitle = document.createElement('h2')
+  const articleDate = document.createElement('p');
+  const articleFirstParagraph = document.createElement('p');
+  const articleSecondParagraph = document.createElement('p');
+  const articleThirdParagraph = document.createElement('p');
+  const articleButton = document.createElement('span');
+
+  // const buttonOpen = document.createElement('button');
+  // const buttonClose = document.createElement('button');
+  //step 2
+  article.classList.add('article');
+  articleDate.classList.add('data');
+  articleButton.classList.add('expandButton');
+
+  // buttonOpen.classList.add('article-open');
+  // buttonClose.classList.add('close');
+
+  article.appendChild(articleTitle);
+  article.appendChild(articleDate);
+  article.appendChild(articleFirstParagraph);
+  article.appendChild(articleSecondParagraph);
+  article.appendChild(articleThirdParagraph);
+  article.appendChild(articleButton);
+
+  // articleButton.appendChild(buttonOpen);
+  // articleButton.appendChild(buttonClose);
+
+  articleTitle.textContent = title;
+  articleDate.textContent = date;
+  articleFirstParagraph.textContent = firstParagraph;
+  articleSecondParagraph.textContent = secondParagraph;
+  articleThirdParagraph.textContent = thirdParagraph;
+
+  // buttonOpen.textContent = open;
+  // buttonClose.textContent = close;
+  articleButton.textContent ='Click to Expand'
+  
+
+    articleButton.addEventListener('click', ()=>{
+    article.classList.toggle('article-open');
+
+  // buttonOpen.classList.toggle('article-open')
+  // buttonClose.classList.toggle('article-open')
+  });
+  //step 3
+  return article;
+}
+
+const articles = document.querySelector('.articles');
+
+data.forEach((element) => {
+  articles.append(createArticle(element.title, element.date, element.firstParagraph, element.secondParagraph, element.thirdParagraph));
+});
