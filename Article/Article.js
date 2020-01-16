@@ -149,7 +149,7 @@ function createArticle(title, date, firstParagraph,secondParagraph,thirdParagrap
   // const buttonClose = document.createElement('button');
   //step 2
   article.classList.add('article');
-  articleDate.classList.add('data');
+  articleDate.classList.add('date');
   articleButton.classList.add('expandButton');
 
   // buttonOpen.classList.add('article-open');
